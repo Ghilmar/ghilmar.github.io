@@ -1,0 +1,31 @@
+{
+  "name": "curruculum2",
+  "type": "module",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@fontsource/fira-code": "^5.2.5",
+    "@fontsource/inter": "^5.2.5",
+    "astro": "^7.3.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/node": "^22.20.2",
+    "simple-icons": "^14.0.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.8.0"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}

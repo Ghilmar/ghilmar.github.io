@@ -1,0 +1,28 @@
+---
+import Icon from './Icon.astro';
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Cambiar entre modo oscuro y claro"
+  class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-base-300 bg-transparent text-base-500 transition-colors hover:border-accent-500 hover:text-accent-500 dark:border-base-700 dark:text-base-400 dark:hover:border-accent-400 dark:hover:text-accent-400"
+>
+  <span class="icon-theme-sun"><Icon name="sun" size={16} /></span>
+  <span class="icon-theme-moon"><Icon name="moon" size={16} /></span>
+</button>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const dark = root.classList.toggle('dark');
+    root.dataset.theme = dark ? 'dark' : 'light';
+    root.style.colorScheme = dark ? 'dark' : 'light';
+    try {
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    } catch (e) {
+      /* almacenamiento no disponible */
+    }
+  });
+</script>

@@ -1,0 +1,100 @@
+---
+import { profile } from '../lib/profile';
+import Icon from './Icon.astro';
+
+const { experience, education } = profile;
+---
+
+<section class="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+  <div class="reveal">
+    <p class="font-mono text-sm text-accent-500 dark:text-accent-400">$ ls ~/trayectoria</p>
+    <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Trayectoria</h2>
+    <p class="mt-3 max-w-2xl text-base text-base-500 dark:text-base-300">
+      Experiencia profesional y formación académica en orden cronológico inverso.
+    </p>
+  </div>
+
+  <div class="mt-12 grid gap-12 lg:grid-cols-2">
+    {/* EXPERIENCIA */}
+    <section id="experiencia" class="reveal scroll-mt-20">
+      <h3 class="flex items-center gap-2 font-mono text-lg font-semibold text-base-800 dark:text-base-100">
+        <Icon name="briefcase" size={18} class="text-accent-500 dark:text-accent-400" />
+        Experiencia
+        <span class="h-px flex-1 bg-base-200 dark:bg-base-800"></span>
+      </h3>
+
+      <ol class="relative mt-8 space-y-8 border-l border-base-200 pl-6 dark:border-base-800">
+        {
+          experience.map((item) => (
+            <li class="relative">
+              <span
+                class="absolute -left-[calc(1.5rem+5px)] top-1.5 h-2.5 w-2.5 rounded-full bg-accent-500 ring-4 ring-accent-500/20"
+                aria-hidden="true"
+              ></span>
+              <div>
+                <p class="font-mono text-xs text-base-400 dark:text-base-400">
+                  {item.period || 'Período no especificado'}
+                </p>
+                <h4 class="mt-1 text-lg font-semibold text-base-800 dark:text-base-50">
+                  {item.role}
+                </h4>
+                <p class="mt-0.5 text-sm font-medium text-accent-600 dark:text-accent-400">
+                  {item.company}
+                </p>
+                <p class="mt-2 text-sm leading-relaxed text-base-500 dark:text-base-300">
+                  {item.description}
+                </p>
+                {
+                  item.achievements.length > 0 && (
+                    <ul class="mt-3 space-y-1.5">
+                      {
+                        item.achievements.map((achievement) => (
+                          <li class="flex items-start gap-2 text-sm text-base-500 dark:text-base-300">
+                            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-success-400" aria-hidden="true"></span>
+                            {achievement}
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  )
+                }
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    {/* EDUCACIÓN */}
+    <section id="educacion" class="reveal scroll-mt-20">
+      <h3 class="flex items-center gap-2 font-mono text-lg font-semibold text-base-800 dark:text-base-100">
+        <Icon name="graduation-cap" size={18} class="text-accent-500 dark:text-accent-400" />
+        Educación
+        <span class="h-px flex-1 bg-base-200 dark:bg-base-800"></span>
+      </h3>
+
+      <ol class="relative mt-8 space-y-8 border-l border-base-200 pl-6 dark:border-base-800">
+        {
+          education.map((item) => (
+            <li class="relative">
+              <span
+                class="absolute -left-[calc(1.5rem+5px)] top-1.5 h-2.5 w-2.5 rounded-full bg-accent-500 ring-4 ring-accent-500/20"
+                aria-hidden="true"
+              ></span>
+              <div>
+                <p class="font-mono text-xs text-base-400 dark:text-base-400">{item.period}</p>
+                <h4 class="mt-1 text-lg font-semibold text-base-800 dark:text-base-50">
+                  {item.degree}
+                </h4>
+                <p class="mt-0.5 text-sm font-medium text-accent-600 dark:text-accent-400">
+                  {item.institution}
+                </p>
+                <p class="mt-1 text-sm text-base-400 dark:text-base-400">{item.location}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+  </div>
+</section>

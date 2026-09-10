@@ -1,0 +1,105 @@
+---
+import { downloadCvHref, profile } from '../lib/profile';
+import Icon from './Icon.astro';
+
+const keywords = ['Angular', 'React', 'TypeScript', 'SQL', 'Git'];
+---
+
+<section id="inicio" class="relative overflow-hidden">
+  <div
+    class="grid-bg pointer-events-none absolute inset-0 opacity-60"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full bg-accent-500/10 blur-3xl"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto grid max-w-6xl gap-12 px-4 pb-20 pt-16 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:pb-28 lg:pt-24">
+    <div class="animate-fade-up">
+      <p class="flex items-center gap-2 font-mono text-xs text-accent-500 dark:text-accent-400">
+        <span class="inline-block h-2 w-2 animate-pulse rounded-full bg-success-400"></span>
+        $ whoami
+        <span aria-hidden="true">→</span>
+      </p>
+
+      <h1
+        class="mt-4 text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+      >
+        {profile.name}
+      </h1>
+
+      <p class="mt-3 font-mono text-sm text-accent-600 sm:text-base dark:text-accent-400">
+        {profile.role}
+      </p>
+
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-base-500 dark:text-base-300">
+        {profile.shortIntro}
+      </p>
+
+      <p class="mt-4 max-w-xl text-lg font-medium leading-relaxed text-base-700 dark:text-base-200">
+        {profile.valueProposition}
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a
+          href="#proyectos"
+          class="inline-flex items-center gap-2 rounded-md bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-accent-600"
+        >
+          Ver Proyectos
+          <Icon name="arrow-right" size={16} />
+        </a>
+        <a
+          href={downloadCvHref}
+          download
+          class="inline-flex items-center gap-2 rounded-md border border-base-300 px-5 py-2.5 text-sm font-semibold text-base-700 transition-colors hover:border-accent-500 hover:text-accent-500 dark:border-base-700 dark:text-base-200 dark:hover:border-accent-400 dark:hover:text-accent-400"
+        >
+          <Icon name="download" size={16} />
+          Descargar CV en PDF
+        </a>
+      </div>
+
+      <ul class="mt-10 flex flex-wrap gap-2" aria-label="Tecnologías destacadas">
+        {
+          keywords.map((tech) => (
+            <li>
+              <span
+                class="inline-flex items-center gap-1.5 rounded-md border border-base-300 px-2.5 py-1 font-mono text-xs text-base-500 dark:border-base-800 dark:text-base-300"
+              >
+                <span class="text-accent-500 dark:text-accent-400" aria-hidden="true">#</span>
+                {tech}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div
+      class="reveal hidden lg:block"
+      aria-hidden="true"
+    >
+      <div
+        class="rounded-xl border border-base-300 bg-base-50 shadow-lg dark:border-base-800 dark:bg-base-900"
+      >
+        <div class="flex items-center gap-2 border-b border-base-200 px-4 py-3 dark:border-base-800">
+          <span class="h-3 w-3 rounded-full bg-base-300 dark:bg-base-700"></span>
+          <span class="h-3 w-3 rounded-full bg-base-300 dark:bg-base-700"></span>
+          <span class="h-3 w-3 rounded-full bg-base-300 dark:bg-base-700"></span>
+          <span class="ml-2 font-mono text-xs text-base-400">gilmar@dev:~/portfolio</span>
+        </div>
+        <div class="space-y-2 p-5 font-mono text-xs leading-relaxed">
+          <p><span class="text-success-400">$</span> <span class="text-base-400">cat</span> profile.json</p>
+          <p class="text-base-400">{"{"}</p>
+          <p class="pl-4 text-base-500 dark:text-base-300">"rol": <span class="text-accent-400">"{profile.role}"</span>,</p>
+          <p class="pl-4 text-base-500 dark:text-base-300">"experiencia": <span class="text-accent-400">"2 años"</span>,</p>
+          <p class="pl-4 text-base-500 dark:text-base-300">"enfocado": <span class="text-accent-400">"apps web"</span>,</p>
+          <p class="pl-4 text-base-500 dark:text-base-300">"stack": [<span class="text-accent-400">"Angular"</span>, <span class="text-accent-400">"React"</span>, <span class="text-accent-400">"SQL"</span>]</p>
+          <p class="text-base-400">{"}"}</p>
+          <p class="pt-2"><span class="text-success-400">$</span> <span class="text-base-400">./objetivo --mostrar</span></p>
+          <p class="text-base-200 dark:text-base-100">"Seguir creciendo como desarrollador y aportar soluciones útiles."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
