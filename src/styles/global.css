@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Inter";
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Code";
+  font-display: swap;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {

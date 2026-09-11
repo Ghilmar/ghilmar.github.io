@@ -1,12 +1,6 @@
 ---
 import '../styles/global.css';
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
-import '@fontsource/fira-code/400.css';
-import '@fontsource/fira-code/500.css';
-import '@fontsource/fira-code/600.css';
+import { defineDocumentInterface } from 'astro:content';
 import Footer from '../components/Footer.astro';
 import Navbar from '../components/Navbar.astro';
 import ChatWidget from '../components/ChatWidget.astro';
@@ -34,9 +28,25 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="es_BO" />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="canonical" href={`${Astro.site ?? 'https://ghilmar.github.io'}${Astro.url.pathname}`} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" />
+    </noscript>
     <script is:inline>
       (function () {
         var stored = null;
