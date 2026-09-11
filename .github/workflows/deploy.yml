@@ -24,14 +24,28 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Install, build and upload site
-        uses: withastro/action@v3
-        # SITE_URL y BASE_PATH se resuelven con sus valores por defecto en
-        # astro.config.mjs (ghilmar.github.io con base /).
-        # Si algún día usas un repo de proyecto, define aquí:
-        #   env:
-        #     SITE_URL: https://ghilmar.github.io
-        #     BASE_PATH: /nombre-del-repositorio
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # SITE_URL y BASE_PATH se resuelven con sus valores por defecto en
+      # astro.config.mjs (ghilmar.github.io con base /).
+      # Si algún día usas un repo de proyecto, define aquí:
+      #   env:
+      #     SITE_URL: https://ghilmar.github.io
+      #     BASE_PATH: /nombre-del-repositorio
+      - name: Build
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
   deploy:
     needs: build
