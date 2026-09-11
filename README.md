@@ -22,7 +22,7 @@ src/
 ├── types/profile.ts       # Tipos de datos del perfil
 ├── lib/
 │   ├── profile.ts         # Carga tipada de profile.json
-│   └── ai-client.ts       # Abstracción del cliente de IA (Ollama/Llama futuro)
+│   └── ai-client.ts       # Abstracción del cliente de IA (Groq/Ollama)
 ├── layouts/BaseLayout.astro
 ├── components/            # Navbar, Hero, TechStack, Projects, Timeline, Contact, Footer, ChatWidget, ThemeToggle, Icon
 ├── styles/global.css      # Tailwind v4 + tokens de diseño + modo oscuro
@@ -36,20 +36,17 @@ Todo el contenido se alimenta desde `src/data/profile.json`: el CV/página **y**
 
 ## Configurar GitHub Pages
 
-1. Crea un repositorio en GitHub (p. ej. `cv-gilmar-betancur`).
-2. En `astro.config.mjs` (o como variables del workflow `SITE_URL` / `BASE_PATH`):
-   - `SITE_URL` → `https://<TU-USUARIO>.github.io`
-   - `BASE_PATH` → `/<nombre-del-repositorio>`
-   - Si el repo es `<usuario>.github.io`, deja `BASE_PATH` en `/` (elimínala).
-3. En el repo: **Settings → Pages → Source: GitHub Actions**.
-4. La web quedará en `https://<TU-USUARIO>.github.io/<repo>/`.
+1. Crea el repositorio **`ghilmar.github.io`** (sitio de usuario) → la web queda en `https://ghilmar.github.io/`.
+2. `astro.config.mjs` ya apunta a `https://ghilmar.github.io` con `base: /` (repo de usuario). Si en el futuro usas un repo de proyecto, cambia `BASE_PATH` a `/<nombre-del-repositorio>`.
+3. En el repo: **Settings → Pages → Source: GitHub Actions** (una primera vez) y registra tu clave `~/.ssh/id_rsa.pub` en **Settings → SSH and GPG keys**.
+4. El workflow `deploy.yml` se dispara solo al hacer push a `main`.
 
 ```bash
 git init
 git add .
 git commit -m "feat: portafolio profesional v1"
 git branch -M main
-git remote add origin git@github.com:<TU-USUARIO>/<repo>.git
+git remote add origin git@github.com:Ghilmar/ghilmar.github.io.git
 git push -u origin main
 ```
 
@@ -57,33 +54,30 @@ git push -u origin main
 
 La interfaz de chat incluye un **fallback elegante**: si el endpoint de IA no está configurado o no responde, muestra un mensaje claro y la página sigue funcionando con normalidad.
 
-Arquitectura preparada para **Llama + Ollama**:
+Arquitectura: usa el formato **OpenAI-compatible (Chat Completions)**, actualmente conectado a **Groq** y listo para Ollama:
 
 ```text
-Navegador → Interfaz de chat → Endpoint/API → Ollama → Llama → profile.json
+Navegador → Interfaz de chat → Proxy (server/) → Groq / Ollama → profile.json
 ```
 
-- El navegador **no** depende de Ollama directamente.
-- Configura `PUBLIC_AI_API_URL` (archivo `.env` o variable de Actions) apuntando a tu backend futuro.
-- GitHub Pages es estático: el backend de tu IA debe alojarse aparte. Un ejemplo mínimo de endpoint que responde `{ "answer": "..." }`:
+### Cómo activarlo
 
-```js
-// server.mjs (fuera de esta web, cuando tengas Ollama corriendo)
-import express from 'express';
-import { execSync } from 'child_process';
+1. En `server/.env` (no se sube a Git) define:
+   - `AI_API_URL` → `https://api.groq.com/openai/v1` (o `http://localhost:11434/v1` para Ollama local).
+   - `AI_API_KEY` → clave del proveedor (**nunca** viaja al navegador).
+   - `AI_MODEL` → el que ofrezca tu cuenta. Consulta disponibles con: `curl https://api.groq.com/openai/v1/models -H "Authorization: Bearer $AI_API_KEY"`. Ejemplos: `openai/gpt-oss-120b`, `openai/gpt-oss-20b`, `qwen/qwen3.8-27b`.
+2. Arranca el proxy:
 
-const app = express();
-app.use(express.json());
+   ```bash
+   cd server && node index.mjs        # escucha en :8787 (GET /health)
+   ```
 
-app.post('/api/chat', (req, res) => {
-  const prompt = `Responde sobre este perfil con datos del CV.\nPregunta: ${req.body.question}`;
-  const answer = execSync(`ollama run llama3.2 "${prompt.replaceAll('"', '\\"')}"`).toString();
-  res.json({ answer });
-});
+3. En `.env.local` del frontend: `PUBLIC_AI_API_URL=http://localhost:8787/api/chat`.
 
-app.listen(8787, () => console.log('API del asistente en :8787'));
-```
+Prueba rápida: `curl -X POST http://localhost:8787/api/chat -H 'Content-Type: application/json' -d '{"question":"¿Qué sabe hacer Gilmar?"}'`
 
+> GitHub Pages es estático: el proxy es tu capa de servidor. Para producción, despliega `server/` en el hosting que prefieras (Render, Railway, Fly.io, VPS…) y apunta `PUBLIC_AI_API_URL` a su URL pública. El proxy responde `{ "answer": "..." }` y mantiene la clave fuera del frontend. Si la IA no responde, el chat muestra el mensaje de caída de `SKILL.md` (Nivel 17).
+>
 > La V1 no implementa RAG/embeddings/vector DB. Esa evolución (`profile.json → contexto → Llama`) queda documentada en `SKILL.md` (niveles 12-15).
 
 ## Notas

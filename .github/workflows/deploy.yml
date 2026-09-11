@@ -26,13 +26,12 @@ jobs:
 
       - name: Install, build and upload site
         uses: withastro/action@v3
-        env:
-          # Ajusta estas dos variables al publicar:
-          # SITE_URL   → https://<TU-USUARIO>.github.io
-          # BASE_PATH  → /<nombre-del-repositorio>
-          # Si el repo se llama <usuario>.github.io, deja BASE_PATH vacío.
-          SITE_URL: ${{ vars.SITE_URL }}
-          BASE_PATH: ${{ vars.BASE_PATH }}
+        # SITE_URL y BASE_PATH se resuelven con sus valores por defecto en
+        # astro.config.mjs (ghilmar.github.io con base /).
+        # Si algún día usas un repo de proyecto, define aquí:
+        #   env:
+        #     SITE_URL: https://ghilmar.github.io
+        #     BASE_PATH: /nombre-del-repositorio
 
   deploy:
     needs: build
