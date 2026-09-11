@@ -11,62 +11,57 @@
  */
 
 interface AssistantResponse {
-  answer?: string;
+	answer?: string;
 }
 
 export class ChatUnavailableError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = 'ChatUnavailableError';
-  }
+	constructor(message: string) {
+		super(message);
+		this.name = "ChatUnavailableError";
+	}
 }
 
-export const AI_ENDPOINT: string =
-  import.meta.env.PUBLIC_AI_API_URL ?? '';
+export const AI_ENDPOINT: string = import.meta.env.PUBLIC_AI_API_URL ?? "";
 
 export const AI_AVAILABLE = AI_ENDPOINT.length > 0;
 
 const REQUEST_TIMEOUT_MS = 15000;
 
-export async function askAssistant(
-  question: string,
-): Promise<string> {
-  if (!AI_AVAILABLE) {
-    throw new ChatUnavailableError(
-      'PUBLIC_AI_API_URL no está configurado.',
-    );
-  }
+export async function askAssistant(question: string): Promise<string> {
+	if (!AI_AVAILABLE) {
+		throw new ChatUnavailableError("PUBLIC_AI_API_URL no está configurado.");
+	}
 
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+	const controller = new AbortController();
+	const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
-  try {
-    const res = await fetch(AI_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question }),
-      signal: controller.signal,
-    });
+	try {
+		const res = await fetch(AI_ENDPOINT, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ question }),
+			signal: controller.signal,
+		});
 
-    if (!res.ok) {
-      throw new ChatUnavailableError(`Respuesta del servidor: ${res.status}`);
-    }
+		if (!res.ok) {
+			throw new ChatUnavailableError(`Respuesta del servidor: ${res.status}`);
+		}
 
-    const data = (await res.json()) as Partial<AssistantResponse>;
-    const answer = data.answer?.trim();
+		const data = (await res.json()) as Partial<AssistantResponse>;
+		const answer = data.answer?.trim();
 
-    if (!answer) {
-      throw new ChatUnavailableError('Respuesta vacía del servidor.');
-    }
+		if (!answer) {
+			throw new ChatUnavailableError("Respuesta vacía del servidor.");
+		}
 
-    return answer;
-  } catch (err) {
-    // Los errores técnicos solo se registran para desarrollo.
-    console.error('[ai-client]', err);
-    throw new ChatUnavailableError(
-      err instanceof Error ? err.message : 'Error de conexión.',
-    );
-  } finally {
-    clearTimeout(timeout);
-  }
+		return answer;
+	} catch (err) {
+		// Los errores técnicos solo se registran para desarrollo.
+		console.error("[ai-client]", err);
+		throw new ChatUnavailableError(
+			err instanceof Error ? err.message : "Error de conexión.",
+		);
+	} finally {
+		clearTimeout(timeout);
+	}
 }

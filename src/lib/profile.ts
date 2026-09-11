@@ -1,5 +1,5 @@
-import profileRaw from '../data/profile.json';
-import type { Profile } from '../types/profile';
+import profileRaw from "../data/profile.json";
+import type { Profile } from "../types/profile";
 
 /**
  * Fuente única de verdad del perfil profesional.
@@ -7,8 +7,8 @@ import type { Profile } from '../types/profile';
  */
 export const profile = profileRaw as Profile;
 
-export const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
+export const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
 
 export const downloadCvHref = `${baseUrl}${profile.downloadCv}`;

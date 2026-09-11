@@ -1,18 +1,18 @@
 ---
-import '../styles/global.css';
-import { defineDocumentInterface } from 'astro:content';
-import Footer from '../components/Footer.astro';
-import Navbar from '../components/Navbar.astro';
-import ChatWidget from '../components/ChatWidget.astro';
+import "../styles/global.css";
+import { defineDocumentInterface } from "astro:content";
+import ChatWidget from "../components/ChatWidget.astro";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
 
 interface Props {
-  title?: string;
-  description?: string;
+	title?: string;
+	description?: string;
 }
 
 const {
-  title = 'Gilmar Betancur · Informático | Desarrollador Junior',
-  description = 'Portafolio profesional de Gilmar Betancur, Informático y Desarrollador Junior especializado en aplicaciones web.',
+	title = "Gilmar Betancur · Informático | Desarrollador Junior",
+	description = "Portafolio profesional de Gilmar Betancur, Informático y Desarrollador Junior especializado en aplicaciones web.",
 } = Astro.props;
 ---
 

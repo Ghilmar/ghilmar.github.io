@@ -1,121 +1,121 @@
 {
-  "name": "Gilmar Betancur",
-  "role": "Informático · Desarrollador Junior",
-  "specialty": "Desarrollo de Aplicaciones Web",
-  "shortIntro": "Desarrollador Junior con 2 años de experiencia en la creación de aplicaciones web. Apasionado por las tecnologías web y el aprendizaje continuo.",
-  "valueProposition": "Diseño y desarrollo soluciones web funcionales, eficientes y fáciles de mantener, con foco en la experiencia del usuario, la accesibilidad y las buenas prácticas de programación.",
-  "location": "Sucre, Chuquisaca — Bolivia",
-  "email": "ghilmaredson@gmail.com",
-  "personalInfo": {
-    "birthDate": "23 de Junio de 1998",
-    "birthPlace": "Villazón - Potosí, Bolivia",
-    "maritalStatus": "Soltero",
-    "idNumber": "C.I. N° 8594392 Potosí"
-  },
-  "downloadCv": "CV-BetancurGilmar.pdf",
-  "socialLinks": {
-    "github": "",
-    "linkedin": ""
-  },
-  "languages": [
-    {
-      "name": "Castellano",
-      "level": "Nativo"
-    }
-  ],
-  "interests": [
-    "Concursos de programación",
-    "Proyectos de código abierto",
-    "Seminarios de tecnología"
-  ],
-  "techStack": {
-    "categories": [
-      {
-        "title": "Lenguajes y Web",
-        "description": "Tecnologías base para construir interfaces y aplicaciones web.",
-        "items": [
-          { "name": "HTML5", "icon": "html5" },
-          { "name": "CSS3", "icon": "css" },
-          { "name": "JavaScript", "icon": "javascript" },
-          { "name": "TypeScript", "icon": "typescript" }
-        ]
-      },
-      {
-        "title": "Frameworks y Librerías",
-        "description": "Herramientas para construir interfaces modernas, reactivas y de alto rendimiento.",
-        "items": [
-          { "name": "Angular", "icon": "angular" },
-          { "name": "React", "icon": "react" }
-        ]
-      },
-      {
-        "title": "Bases de Datos y Herramientas",
-        "description": "Persistencia de datos y herramientas de desarrollo y control de versiones.",
-        "items": [
-          { "name": "SQL", "icon": "database" },
-          { "name": "Git", "icon": "git" },
-          { "name": "Visual Studio Code", "icon": "code" },
-          { "name": "Microsoft Office", "icon": "apps" }
-        ]
-      }
-    ]
-  },
-  "projects": [
-    {
-      "name": "Plataforma de Inscripciones",
-      "category": "Aplicación Web",
-      "company": "EMDITEC",
-      "description": "Plataforma web para la gestión digital de inscripciones.",
-      "problem": "",
-      "solution": "",
-      "result": "",
-      "technologies": ["Angular", "SQL", "Git"],
-      "github": "",
-      "demo": ""
-    },
-    {
-      "name": "Aplicaciones Móviles",
-      "category": "Aplicación Móvil",
-      "company": "EMDITEC",
-      "description": "Desarrollo de aplicaciones móviles para distintos clientes de la empresa.",
-      "problem": "",
-      "solution": "",
-      "result": "",
-      "technologies": ["React", "JavaScript"],
-      "github": "",
-      "demo": ""
-    }
-  ],
-  "experience": [
-    {
-      "period": "",
-      "role": "Desarrollador Junior",
-      "company": "EMDITEC",
-      "description": "Participación en el desarrollo de soluciones informáticas para la empresa.",
-      "achievements": [
-        "Desarrollo de una plataforma de inscripciones.",
-        "Desarrollo de aplicaciones móviles."
-      ]
-    }
-  ],
-  "education": [
-    {
-      "period": "Gestión 2025",
-      "degree": "Diplomado en Redes y Ciberseguridad",
-      "institution": "Universidad del Valle",
-      "location": "Santa Cruz, Bolivia"
-    },
-    {
-      "period": "Gestión 2024",
-      "degree": "Técnico Superior en Informática (T.S. Informática)",
-      "institution": "Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca",
-      "location": "Sucre, Bolivia"
-    },
-    {
-      "period": "Gestión 2015",
-      "degree": "Bachiller / Educación Secundaria",
-      "institution": "Colegio Nacional Franz Tamayo de la Frontera",
-      "location": "Villazón, Potosí, Bolivia"
-    }
-  ]
+	"name": "Gilmar Betancur",
+	"role": "Informático · Desarrollador Junior",
+	"specialty": "Desarrollo de Aplicaciones Web",
+	"shortIntro": "Desarrollador Junior con 2 años de experiencia en la creación de aplicaciones web. Apasionado por las tecnologías web y el aprendizaje continuo.",
+	"valueProposition": "Diseño y desarrollo soluciones web funcionales, eficientes y fáciles de mantener, con foco en la experiencia del usuario, la accesibilidad y las buenas prácticas de programación.",
+	"location": "Sucre, Chuquisaca — Bolivia",
+	"email": "ghilmaredson@gmail.com",
+	"personalInfo": {
+		"birthDate": "23 de Junio de 1998",
+		"birthPlace": "Villazón - Potosí, Bolivia",
+		"maritalStatus": "Soltero",
+		"idNumber": "C.I. N° 8594392 Potosí"
+	},
+	"downloadCv": "CV-BetancurGilmar.pdf",
+	"socialLinks": {
+		"github": "",
+		"linkedin": ""
+	},
+	"languages": [
+		{
+			"name": "Castellano",
+			"level": "Nativo"
+		}
+	],
+	"interests": [
+		"Concursos de programación",
+		"Proyectos de código abierto",
+		"Seminarios de tecnología"
+	],
+	"techStack": {
+		"categories": [
+			{
+				"title": "Lenguajes y Web",
+				"description": "Tecnologías base para construir interfaces y aplicaciones web.",
+				"items": [
+					{ "name": "HTML5", "icon": "html5" },
+					{ "name": "CSS3", "icon": "css" },
+					{ "name": "JavaScript", "icon": "javascript" },
+					{ "name": "TypeScript", "icon": "typescript" }
+				]
+			},
+			{
+				"title": "Frameworks y Librerías",
+				"description": "Herramientas para construir interfaces modernas, reactivas y de alto rendimiento.",
+				"items": [
+					{ "name": "Angular", "icon": "angular" },
+					{ "name": "React", "icon": "react" }
+				]
+			},
+			{
+				"title": "Bases de Datos y Herramientas",
+				"description": "Persistencia de datos y herramientas de desarrollo y control de versiones.",
+				"items": [
+					{ "name": "SQL", "icon": "database" },
+					{ "name": "Git", "icon": "git" },
+					{ "name": "Visual Studio Code", "icon": "code" },
+					{ "name": "Microsoft Office", "icon": "apps" }
+				]
+			}
+		]
+	},
+	"projects": [
+		{
+			"name": "Plataforma de Inscripciones",
+			"category": "Aplicación Web",
+			"company": "EMDITEC",
+			"description": "Plataforma web para la gestión digital de inscripciones.",
+			"problem": "",
+			"solution": "",
+			"result": "",
+			"technologies": ["Angular", "SQL", "Git"],
+			"github": "",
+			"demo": ""
+		},
+		{
+			"name": "Aplicaciones Móviles",
+			"category": "Aplicación Móvil",
+			"company": "EMDITEC",
+			"description": "Desarrollo de aplicaciones móviles para distintos clientes de la empresa.",
+			"problem": "",
+			"solution": "",
+			"result": "",
+			"technologies": ["React", "JavaScript"],
+			"github": "",
+			"demo": ""
+		}
+	],
+	"experience": [
+		{
+			"period": "",
+			"role": "Desarrollador Junior",
+			"company": "EMDITEC",
+			"description": "Participación en el desarrollo de soluciones informáticas para la empresa.",
+			"achievements": [
+				"Desarrollo de una plataforma de inscripciones.",
+				"Desarrollo de aplicaciones móviles."
+			]
+		}
+	],
+	"education": [
+		{
+			"period": "Gestión 2025",
+			"degree": "Diplomado en Redes y Ciberseguridad",
+			"institution": "Universidad del Valle",
+			"location": "Santa Cruz, Bolivia"
+		},
+		{
+			"period": "Gestión 2024",
+			"degree": "Técnico Superior en Informática (T.S. Informática)",
+			"institution": "Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca",
+			"location": "Sucre, Bolivia"
+		},
+		{
+			"period": "Gestión 2015",
+			"degree": "Bachiller / Educación Secundaria",
+			"institution": "Colegio Nacional Franz Tamayo de la Frontera",
+			"location": "Villazón, Potosí, Bolivia"
+		}
+	]
 }
